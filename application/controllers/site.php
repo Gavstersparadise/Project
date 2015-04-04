@@ -11,6 +11,17 @@ class Site extends CI_Controller {
 
 	}
 	
+	public function search() {
+
+		$this -> load -> view("search");
+
+	}
+
+public function delete() {
+
+		$this -> load -> view("delete");
+
+	}
 
 	public function ProductCreate() {
 
@@ -23,6 +34,19 @@ class Site extends CI_Controller {
 		$this -> load -> view("category");
 
 	}
+	
+	public function update() {
+
+		$this -> load -> view("update");
+
+	}
+	
+	public function view() {
+
+		$this -> load -> view("view");
+
+	}
+	
 	
 
 	public function members() {

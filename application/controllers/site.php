@@ -10,6 +10,20 @@ class Site extends CI_Controller {
 		$this -> load -> view("home", $data);
 
 	}
+	
+
+	public function ProductCreate() {
+
+		$this -> load -> view("ProductCreate");
+
+	}
+	
+	public function category() {
+
+		$this -> load -> view("category");
+
+	}
+	
 
 	public function members() {
 
@@ -41,6 +55,7 @@ class Site extends CI_Controller {
 	}
 
 	public function login_validation_lect() {
+		
 
 		$this -> load -> library('form_validation');
 		$this -> form_validation -> set_rules('email', "Email", "required|trim|xss_clean|callback_validate_credentials");

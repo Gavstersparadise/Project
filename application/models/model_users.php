@@ -18,6 +18,10 @@ class model_users extends CI_Model {
 		}
 
 	}
+		public function form_insert($data) {
+
+		$this -> db -> insert('category', $data);
+	}
 	
 	public function can_log_inAdmin() {
 

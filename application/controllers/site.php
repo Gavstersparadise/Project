@@ -16,13 +16,12 @@ class Site extends CI_Controller {
 		$this -> load -> view("members");
 
 	}
-	
+
 	public function admin() {
 
 		$this -> load -> view("admin");
 
 	}
-	
 
 	public function validate_credentials() {
 
@@ -39,32 +38,28 @@ class Site extends CI_Controller {
 			return FALSE;
 
 		}
-		
-
 	}
-	
+
 	public function login_validation_lect() {
 
-$this -> load -> library('form_validation');
-$this -> form_validation -> set_rules('email', "Email", "required|trim|xss_clean|callback_validate_credentials");
-$this -> form_validation -> set_rules('password', "Password", "required|md5|trim");
+		$this -> load -> library('form_validation');
+		$this -> form_validation -> set_rules('email', "Email", "required|trim|xss_clean|callback_validate_credentials");
+		$this -> form_validation -> set_rules('password', "Password", "required|md5|trim");
 
-if ($this -> form_validation -> run()) {
+		if ($this -> form_validation -> run()) {
 
-$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
+			$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
 
-$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"), "lecturer" => "TRUE", "is_logged_in" => 1);
+			$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"), "lecturer" => "TRUE", "is_logged_in" => 1);
 
-$this -> session -> set_userdata($lovely);
-redirect('site/admin');
-} 
-else 
-{
-echo "error";
-}
+			$this -> session -> set_userdata($lovely);
+			redirect('site/admin');
+		} else {
+			echo "error";
+		}
 
 	}
-	
+
 	public function login_validation() {
 
 		$this -> load -> library('form_validation');
@@ -81,7 +76,7 @@ echo "error";
 			redirect('site/members');
 		} else {
 			session_start();
-		echo "error";
+			echo "error";
 
 		}
 
@@ -127,9 +122,8 @@ echo "error";
 
 			if ($this -> model_users -> add_temp_user($key)) {
 				if ($m -> send()) {
-					
+
 					echo "email sent";
-					
 
 				} else
 					echo "error";
@@ -138,9 +132,9 @@ echo "error";
 				echo "error";
 
 		} else {
-			
+
 			$this -> load -> view("home");
-			
+
 		}
 
 	}

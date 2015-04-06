@@ -100,6 +100,7 @@ public function delete() {
 	}
 
 	public function login_validation() {
+		//stratgy  pattern is use  enables the validation behavior to be selected at runtime
 
 		$this -> load -> library('form_validation');
 		$this -> form_validation -> set_rules('email', "Email", "required|trim|xss_clean|callback_validate_credentials");
@@ -123,6 +124,7 @@ public function delete() {
 
 	public function signUp_validation() {
 		require ('C:\xampp\htdocs\Project\application\libraries\PHPMailer-master\PHPMailerAutoload.php');
+		//sigleton as the class is distributing one instabnce of itself
 
 		$this -> load -> library('form_validation');
 

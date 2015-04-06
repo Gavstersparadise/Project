@@ -7,7 +7,6 @@ $this->load->model('category_insert');
 function index()
 {
 	
-	$data['category'] = $this->category_insert->show_students();
 $this->load->view('category', $data);
 	
 }
@@ -16,9 +15,9 @@ $this->load->view('category', $data);
 $this->load->library('form_validation');
 $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
-$this->form_validation->set_rules('name', 'name', 'required');
+$this->form_validation->set_rules('cat_name', 'cat_name', 'required');
 
-$this->form_validation->set_rules('info', 'info.', 'required');
+
 
 
 
@@ -31,8 +30,8 @@ else
 {
 // Setting Values For Tabel Columns
 $data = array(
-'name' => $this->input->post('name'),
-'info' => $this->input->post('info'),
+'cat_name' => $this->input->post('cat_name'),
+
 
 );
 // Transfering Data To Model

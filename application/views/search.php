@@ -7,7 +7,7 @@ $result=mysql_query($query) or die("Query Failed : ".mysql_error());
 $i=0;
 while($rows=mysql_fetch_array($result))
 {
-$roll[$i]=$rows['title'];
+$roll[$i]=$rows['product_name'];
 $i++;
 }
 $total_elmt=count($roll);
@@ -35,14 +35,16 @@ if(isset($_POST['submit']))
 {
 $value=$_POST['sel'];
 
-$query2 = "SELECT * FROM products WHERE title='$value'";
+$query2 = "SELECT * FROM products WHERE product_name='$value'";
 $result2=mysql_query($query2) or die("Query Failed : ".mysql_error());
 while($row=mysql_fetch_array($result2))
 {
-	echo "title: ".$row['title']."<br/>";
-	echo "manufacturer: ".$row['manufacturer']."<br/>";
-	echo "price : ".$row['price']."<br/>";
-	echo "category_id: ".$row['category_id'];
+	
+	
+	echo "title: ".$row['product_name']."<br/>";
+	echo "manufacturer: ".$row['product_code']."<br/>";
+	echo "price : ".$row['product_price']."<br/>";
+	
 }
 
 }

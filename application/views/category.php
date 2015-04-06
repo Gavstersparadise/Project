@@ -8,16 +8,11 @@
 			">				
 <?php echo form_open('categoryController/error'); ?>
 						<?php echo form_label('Category Name :'); ?>
-					<?php echo form_error('name'); ?>
-					<?php echo form_textarea(array('id' => 'name', 'name' => 'name')); ?>
+					<?php echo form_error('cat_name'); ?>
+					<?php echo form_textarea(array('id' => 'cat_name', 'name' => 'cat_name')); ?>
 
 			
-						<?php echo form_label('SUBJECT DESCRIPTION:'); ?>
-					<?php echo form_error('info'); ?>
-					<?php echo form_textarea(array('id' => 'info', 'name' => 'info')); ?>
-					
-
-					
+									
 					
 					<input type="submit" value="CREATE Category" class="btn btn-info btn-block">
 					

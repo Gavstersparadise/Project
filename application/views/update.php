@@ -9,7 +9,7 @@ $result=mysql_query($query) or die("Query Failed : ".mysql_error());
 $i=0;
 while($rows=mysql_fetch_array($result))
 {
-$roll[$i]=$rows['title'];
+$roll[$i]=$rows['product_name'];
 $i++;
 }
 $total_elmt=count($roll);
@@ -26,9 +26,9 @@ echo $roll[$j];
 }
 ?>
 </select><br />
-title: <input name="title" type="text" /><br />
-manufacturer: <input name="manufacturer" type="text" /><br />
-price: <input name="price" type="text" /><br />
+name: <input name="product_name" type="text" /><br />
+description: <input name="product_description" type="text" /><br />
+price: <input name="product_price" type="text" /><br />
 <input name="submit" type="submit" value="Update"/><br />
 <input name="reset" type="reset" value="Reset"/>
 </form>
@@ -38,11 +38,11 @@ price: <input name="price" type="text" /><br />
 if(isset($_POST['submit']))
 {
 $value=$_POST['sel'];
-$name=$_POST['title'];
-$marks=$_POST['manufacturer'];
-$course=$_POST['price'];
+$name=$_POST['product_name'];
+$marks=$_POST['product_description'];
+$course=$_POST['product_price'];
 
-$query2 = "UPDATE products SET title='$name',manufacturer='$marks',price='$course' WHERE title='$value'";
+$query2 = "UPDATE products SET product_name='$name',product_description='$marks',product_price='$course' WHERE product_name='$value'";
 $result2=mysql_query($query2) or die("Query Failed : ".mysql_error());
 echo "Successfully Updated";
 }

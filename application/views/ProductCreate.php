@@ -3,17 +3,17 @@
 						<?php echo form_open('ProductController/error'); ?>
 						
 						<?php echo form_label('INDICATE Product Title :'); ?>
-					<?php echo form_error('title'); ?>
-					<?php echo form_textarea(array('id' => 'title', 'name' => 'title')); ?>
+					<?php echo form_error('product_name'); ?>
+					<?php echo form_textarea(array('id' => 'product_name', 'name' => 'product_name')); ?>
 					<br />
 					
-					<?php echo form_label(' manufacturer :'); ?>
-					<?php echo form_error('manufacturer'); ?>
-					<?php echo form_textarea(array('id' => 'manufacturer', 'name' => 'manufacturer')); ?>
+					<?php echo form_label(' product_code :'); ?>
+					<?php echo form_error('product_code'); ?>
+					<?php echo form_textarea(array('id' => 'product_code', 'name' => 'product_code')); ?>
 					<br />
-					<?php echo form_label('INDICATE price :'); ?>
-					<?php echo form_error('price'); ?>
-					<?php echo form_textarea(array('id' => 'price', 'name' => 'price')); ?>
+					<?php echo form_label('INDICATE product_description :'); ?>
+					<?php echo form_error('product_description'); ?>
+					<?php echo form_textarea(array('id' => 'product_description', 'name' => 'product_description')); ?>
 		<br />
 		
 		         
@@ -22,11 +22,11 @@
 				<select name="category_id">
 					<option value="none" selected="selected">------------Select category-----------</option>
 
-					<?php $sql = "select id	, name from category ";
+					<?php $sql = "select cat_id	, cat_name from categories ";
 	$result = mysql_query($sql);
 	while ($row = mysql_fetch_array($result)) {
 
-		echo "<option value = '" . $row['id'] . "'>" . $row['name'] . "</option>";
+		echo "<option value = '" . $row['cat_id'] . "'>" . $row['cat_name'] . "</option>";
 
 		array('id' => 'category', 'value' => 'category');
 
@@ -35,7 +35,10 @@
 					?>
 					
 <br />
-	
+	<?php echo form_label('INDICATE product_price :'); ?>
+					<?php echo form_error('product_price'); ?>
+					<?php echo form_textarea(array('id' => 'product_price', 'name' => 'product_price')); ?>
+		<br />
 						
 					<input type="submit" value="CREATE SUBJECT" class="btn btn-info btn-block">
 					</form>

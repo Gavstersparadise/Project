@@ -5,7 +5,7 @@ $result=mysql_query($query) or die("Query Failed : ".mysql_error());
 $i=0;
 while($rows=mysql_fetch_array($result))
 {
-$name[$i]=$rows['title'];
+$name[$i]=$rows['product_name'];
 $i++;
 }
 $total_elmt=count($name);
@@ -35,7 +35,7 @@ if(isset($_POST['submit']))
 $name=$_POST['sel'];
 
 
-$query = "DELETE FROM products WHERE title='$name'";
+$query = "DELETE FROM products WHERE product_name='$name'";
 $result=mysql_query($query) or die("Query Failed : ".mysql_error());
 echo "Successfully Deleted!";
 }

@@ -40,7 +40,7 @@
 					<?php echo form_textarea(array('id' => 'product_price', 'name' => 'product_price')); ?>
 		<br />
 						
-					<input type="submit" value="CREATE SUBJECT" class="btn btn-info btn-block">
+					<input type="submit" value="CREATE Product" >
 					</form>
 						
 				</div style>

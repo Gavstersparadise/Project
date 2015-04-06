@@ -72,6 +72,6 @@ public function add() {
 
     public function clear_cart() {
         $this->cart->destroy();
-        redirect('index');
+        redirect('members');
     }
 }

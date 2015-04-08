@@ -1,5 +1,5 @@
  <?php
- class Book {
+ class Tearmsconditions {
 
 
     private $author;

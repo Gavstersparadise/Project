@@ -1,6 +1,7 @@
 <?php
 
 class Site extends CI_Controller {
+	
 
 	public function index() {
 
@@ -11,15 +12,34 @@ class Site extends CI_Controller {
 
 	}
 	
+	public  function automaticCreate(){
+	$this -> load -> view("automaticCreae");
+	
+	}
+	
+	public function logout() {
+		
+		$this -> session -> sess_destroy();
+
+
+		redirect("site");
+	
+	}	
 	public function search() {
 
 		$this -> load -> view("search");
 
 	}
+	
+	public function terms() {
+
+		$this -> load -> view("terms");
+
+	}
 
 public function delete() {
 
-		$this -> load -> view("delete");
+$this -> load -> view("delete");
 
 	}
 
@@ -89,7 +109,7 @@ public function delete() {
 
 			$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
 
-			$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"), "lecturer" => "TRUE", "is_logged_in" => 1);
+			$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"), "admin" => "TRUE", "is_logged_in" => 1);
 
 			$this -> session -> set_userdata($lovely);
 			redirect('site/admin');
@@ -107,15 +127,15 @@ public function delete() {
 		$this -> form_validation -> set_rules('password', "Password", "required|md5|trim");
 
 		if ($this -> form_validation -> run()) {
-
+             session_start();
 			$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
 
-			$data = array("id" => $user_id, "email" => $this -> input -> post("email"), "student" => "TRUE", "is_logged_in" => 1);
+			$data = array("id" => $user_id, "email" => $this -> input -> post("email"), "user" => "TRUE", "is_logged_in" => 1);
 
 			$this -> session -> set_userdata($data);
 			redirect('site/members');
 		} else {
-			session_start();
+		
 			echo "error";
 
 		}
@@ -137,6 +157,7 @@ public function delete() {
 		$this -> form_validation -> set_message('is_unique', "That Email already exists");
 
 		if ($this -> form_validation -> run()) {
+		//chain-of-command pattern
 
 			$m = new PHPMailer;
 			$m -> isSMTP();

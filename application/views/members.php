@@ -1,3 +1,8 @@
+<?php
+	if($this -> session -> userdata('id') == "" || !($this -> session -> userdata('user') == "TRUE")){
+   redirect("site/restricted");
+}
+?>
 <html>
 	<head>
 		<title>Customer PAGE</title>
@@ -14,6 +19,10 @@
 				</li>
 
 				<a href="<?php echo base_url(); ?>Shop/"><span>Buy Products<span></a>
+				<a href="<?php echo base_url(); ?>site/terms"><span>terms and Conditions<span></a>
+				<a href="<?php echo base_url(); ?>site/logout"><span>Logout<span></a>
+				
+
 			</ul>
 		</center>
 	</body>

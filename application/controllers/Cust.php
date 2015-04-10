@@ -60,7 +60,7 @@ class Cust extends CI_Controller {
 
 			$payment_code = mt_rand();
 
-			$order_data = array('order_details' => serialize($this -> cart -> contents()), 'order_delivery_address' => $this -> input -> post('delivery_address'), 'order_created_at' => time(), 'order_closed' => '0', 'order_fulfilment_code' => $payment_code, 'order_delivery_address' => $this -> input -> post('payment_address'));
+			$order_data = array('order_details' => json_encode($this -> cart -> contents()), 'order_delivery_address' => $this -> input -> post('delivery_address'), 'order_created_at' => time(), 'order_closed' => '0', 'order_fulfilment_code' => $payment_code, 'order_delivery_address' => $this -> input -> post('payment_address'));
 
 			if ($this -> Shop_model -> save_cart_to_database($cust_data, $order_data)) {
 				echo 'Order and Customer saved to DB';

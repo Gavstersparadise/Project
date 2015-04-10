@@ -51,7 +51,7 @@ class Cust extends CI_Controller {
 
 			#$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
 
-			$this -> paypal -> add('Student Enrolment', 100);
+			$this -> paypal -> add('Chart stuff', $this -> session -> userdata('total'));
 			//Second item
 
 			$this -> paypal -> pay();
@@ -64,10 +64,13 @@ class Cust extends CI_Controller {
 
 			if ($this -> Shop_model -> save_cart_to_database($cust_data, $order_data)) {
 				echo 'Order and Customer saved to DB';
+					$this->cart->destroy();
 			} else {
 				echo 'Could not save to DB';
 			}
 		}
 	}
+	
+
 
 }

@@ -26,7 +26,7 @@ class Site extends CI_Controller {
 	
 	}	
 	public function search() {
-
+       $this -> load -> model("model_users");
 		$this -> load -> view("search");
 
 	}

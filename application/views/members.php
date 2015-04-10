@@ -2,6 +2,8 @@
 	if($this -> session -> userdata('id') == "" || !($this -> session -> userdata('user') == "TRUE")){
    redirect("site/restricted");
 }
+
+echo $this -> session -> userdata('id');
 ?>
 <html>
 	<head>
@@ -21,9 +23,12 @@
 				<a href="<?php echo base_url(); ?>Shop/"><span>Buy Products<span></a>
 				<a href="<?php echo base_url(); ?>site/terms"><span>terms and Conditions<span></a>
 				<a href="<?php echo base_url(); ?>site/logout"><span>Logout<span></a>
+					<li style="display:inline; padding:15px;"><a href="search" style="text-decoration:none;">Search</a></li>
 				
 
 			</ul>
 		</center>
 	</body>
 </html>
+
+

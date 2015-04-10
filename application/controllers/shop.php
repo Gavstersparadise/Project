@@ -3,6 +3,7 @@
 class Shop extends CI_Controller {
     function __construct() {
         parent::__construct();
+	   $this -> load -> model("model_users");
         $this->load->library('cart');
         $this->load->helper('form');
         $this->load->helper('url');

@@ -6,7 +6,9 @@
     background: #fff;
     background: rgba(255,255,255,0.9);
 			">				
-<?php echo form_open('categoryController/error'); ?>
+			<?php   echo validation_errors(); ?>
+<?php echo form_open('categoryController/error');?>
+
 						<?php echo form_label('Category Name :'); ?>
 					<?php echo form_error('cat_name'); ?>
 					<?php echo form_textarea(array('id' => 'cat_name', 'name' => 'cat_name')); ?>

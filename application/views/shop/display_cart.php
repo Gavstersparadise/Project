@@ -35,9 +35,12 @@
 
       </td>
       <td><?php echo $this->cart->format_number($items['price']); ?></td>
-      <td>$<?php echo $this->cart->format_number($items['subtotal']); ?></td>
+      <td><?php echo $this->cart->format_number($items['subtotal']); ?></td>
     </tr>
+	<?php			
 
+
+?>
     <?php $i++; ?>
 
   <?php endforeach; ?>
@@ -46,6 +49,16 @@
     <td colspan="2"> </td>
     <td><strong>Total</strong></td>
     <td>$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+	<?php
+	
+	$total =  $items['subtotal'];
+	echo $total;
+	$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
+
+	$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"),'total' => $total, "user" => "TRUE", "is_logged_in" => 1);
+
+	$this -> session -> set_userdata($lovely);
+	?>
   </tr>
 
 </table>

@@ -10,7 +10,7 @@ while ($rows = mysql_fetch_array($result)) {
 $total_elmt = count($roll);
 ?>
 <form method="POST" action="">
-	Select products:
+	Select Users:
 	<select name="sel">
 		<option>Select</option>
 		<?php
@@ -18,8 +18,8 @@ for($j=0;$j<$total_elmt;$j++)
 {
 ?><option><?php
 echo $roll[$j];
-?><
-		/option><?php
+?>
+		<?php
 		}
 		?>
 	</select>

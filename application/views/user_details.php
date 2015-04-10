@@ -1,3 +1,6 @@
+<?php
+	echo $this -> session -> userdata('id');
+	?>
 <body>
     <?php echo validation_errors(); ?>
     <?php echo form_open('/cust/user_details') ; ?>

@@ -21,16 +21,16 @@ class Cust extends CI_Controller {
 		$this -> form_validation -> set_error_delimiters();
 
 		// Set validation rules
-		$this -> form_validation -> set_rules('cust_first_name', 'cust_first_name', 'required|min_length[1]|max_length[125]');
-		$this -> form_validation -> set_rules('cust_last_name', 'Last Name', 'required|min_length[1]|max_length[125]');
-		$this -> form_validation -> set_rules('email', 'Email Address', 'required|min_length[1]|max_length[255]|valid_email');
-		$this -> form_validation -> set_rules('email_confirm', 'Comfirmation Email Address', 'required|min_length[1]|max_length[255]|valid_email|matches[email]');
-		$this -> form_validation -> set_rules('payment_address', 'Payment Address', 'required|min_length[1]|max_length[1000]');
-		$this -> form_validation -> set_rules('delivery_address', 'Delivery Address', 'min_length[1]|max_length[1000]');
+		$this -> form_validation -> set_rules('cust_first_name', 'cust_first_name', 'required');
+		$this -> form_validation -> set_rules('cust_last_name', 'Last Name', 'required');
+		$this -> form_validation -> set_rules('email', 'Email Address', 'required|valid_email');
+		$this -> form_validation -> set_rules('email_confirm', 'Comfirmation Email Address', 'required|valid_email|matches[email]');
+		$this -> form_validation -> set_rules('payment_address', 'Payment Address', 'required');
+		$this -> form_validation -> set_rules('delivery_address', 'Delivery Address', '');
 
 		// Begin validation
 		if ($this -> form_validation -> run() == FALSE) {
-			$this -> load -> view('shop/user_details');
+			$this -> load -> view('user_details');
 		} else {
 			
 	
@@ -51,12 +51,12 @@ class Cust extends CI_Controller {
 
 			#$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
 
-			$this -> paypal -> add('Chart stuff', $this -> session -> userdata('total'));
+			$this -> paypal -> add('Chart stuff', 50000);
 			//Second item
 
 			$this -> paypal -> pay();
 			//Proccess the payment
-			$cust_data = array('cust_first_name' => $this -> input -> post('cust_first_name'), 'cust_last_name' => $this -> input -> post('cust_last_name'), 'cust_email' => $this -> input -> post('email'), 'cust_address' => $this -> input -> post('payment_address'), 'cust_created_at' => time());
+			$cust_data = array( 'user_id' => $this -> session -> userdata('id'), 'cust_first_name' => $this -> input -> post('cust_first_name'), 'cust_last_name' => $this -> input -> post('cust_last_name'), 'cust_email' => $this -> input -> post('email'), 'cust_address' => $this -> input -> post('payment_address'), 'cust_created_at' => time());
 
 			$payment_code = mt_rand();
 

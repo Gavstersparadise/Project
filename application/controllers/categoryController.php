@@ -1,5 +1,5 @@
 <?php
-class categoryController extends CI_Controller {
+	class categoryController extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('category_insert');

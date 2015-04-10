@@ -5,9 +5,7 @@ class Shop extends CI_Controller {
         parent::__construct();
 	   $this -> load -> model("model_users");
         $this->load->library('cart');
-        $this->load->helper('form');
-        $this->load->helper('url');
-        $this->load->helper('security');
+     
         $this->load->model('Shop_model');
     }
 
@@ -26,11 +24,11 @@ class Shop extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['query'] = $this->Shop_model->get_all_products($category_id);
             $data['cat_query'] = $this->Shop_model->get_all_categories();
-            $this->load->view('shop/display_products', $data); 
+            $this->load->view('display_products', $data); 
         } else {
             $data['query'] = $this->Shop_model->get_all_products($category_id);
             $data['cat_query'] = $this->Shop_model->get_all_categories();
-            $this->load->view('shop/display_products', $data);
+            $this->load->view('display_products', $data);
         }
     }
 
@@ -49,7 +47,7 @@ public function add() {
         $this->cart->insert($data);
         $data['cat_query'] = $this->Shop_model->get_all_categories();
 
-        $this->load->view('shop/display_cart', $data);
+        $this->load->view('display_cart', $data);
     }
 
     public function update_cart() {
@@ -63,12 +61,12 @@ public function add() {
         }
 
         $this->cart->update($data);
-        redirect('shop/display_cart');
+        redirect('display_cart');
     }
 
     public function display_cart() {
         $data['cat_query'] = $this->Shop_model->get_all_categories();
-        $this->load->view('shop/display_cart', $data);
+        $this->load->view('display_cart', $data);
     }
 
     public function clear_cart() {

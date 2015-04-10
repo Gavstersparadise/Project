@@ -12,20 +12,29 @@ class Site extends CI_Controller {
 
 	}
 	
+	public function customerHistory() {
+ session_start();
+	
+	$this -> load -> view("customerHistory");
+
+	}
+	
 	public  function automaticCreate(){
+	 session_start();
 	$this -> load -> view("automaticCreae");
 	
 	}
 	
 	public function logout() {
-		
+		 session_start();
 		$this -> session -> sess_destroy();
 
 
-		redirect("site");
+		redirect("Site");
 	
 	}	
 	public function search() {
+	 session_start();
        $this -> load -> model("model_users");
 		$this -> load -> view("search");
 
@@ -92,32 +101,13 @@ $this -> load -> view("delete");
 		} else {
 
 			$this -> form_validation -> set_message('validate_credentials', 'incorrect username/password');
-			redirect("site/home");
+			echo "error";
 			return FALSE;
 
 		}
 	}
-
-	public function login_validation_lect() {
-		
-
-		$this -> load -> library('form_validation');
-		$this -> form_validation -> set_rules('email', "Email", "required|trim|xss_clean|callback_validate_credentials");
-		$this -> form_validation -> set_rules('password', "Password", "required|md5|trim");
-
-		if ($this -> form_validation -> run()) {
-
-			$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
-
-			$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"), "admin" => "TRUE", "is_logged_in" => 1);
-
-			$this -> session -> set_userdata($lovely);
-			redirect('site/admin');
-		} else {
-			echo "error";
-		}
-
-	}
+	
+	
 
 	public function login_validation() {
 		//stratgy  pattern is use  enables the validation behavior to be selected at runtime
@@ -133,7 +123,7 @@ $this -> load -> view("delete");
 			$data = array("id" => $user_id, "email" => $this -> input -> post("email"), "user" => "TRUE", "is_logged_in" => 1);
 
 			$this -> session -> set_userdata($data);
-			redirect('site/members');
+			redirect('Site/members');
 		} else {
 		
 			echo "error";
@@ -165,7 +155,7 @@ $this -> load -> view("delete");
 			//	$m->SMTPDebug=2;
 			$m -> Host = 'smtp.gmail.com';
 			$m -> Username = 'gavstersparadise@gmail.com';
-			$m -> Password = 'gav101xzaq123';
+			$m -> Password = 'Gav101xzaq123';
 			$m -> SMTPSecure = 'ssl';
 			$m -> Port = 465;
 			$this -> load -> model("model_users");
@@ -201,11 +191,7 @@ $this -> load -> view("delete");
 
 	}
 
-	public function signUp() {
 
-		$this -> load -> view("signUp");
-
-	}
 
 	public function registerUser($key) {
 
@@ -216,7 +202,7 @@ $this -> load -> view("delete");
 
 				$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
 
-				$data = array("id" => $user_id, 'email' => $newemail, "student" => "TRUE", "is_logged_in" => 1);
+				$data = array("id" => $user_id, 'email' => $newemail, "user" => "TRUE", "is_logged_in" => 1);
 
 				$this -> session -> set_userdata($data);
 				redirect('site/members');

@@ -1,3 +1,6 @@
+<?php
+	echo $this -> session -> userdata('id');
+	?>
 <body>
     <table>
     <?php foreach ($query->result() as $row) : ?>

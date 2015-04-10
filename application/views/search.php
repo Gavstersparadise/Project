@@ -1,5 +1,5 @@
 <?php
-	if($this -> session -> userdata('id') == "" || !($this -> session -> userdata('user') == "TRUE")){
+	if($this -> session -> userdata('id') == "" ){
    redirect("site/restricted");
 }
 
@@ -37,6 +37,8 @@ $this -> load -> model("model_users");
 		</form>
 		
 		<?php
+		$gav = "";
+		
 			
 			if(isset($_POST['submit']))
 			{
@@ -68,6 +70,25 @@ $this -> load -> model("model_users");
 			?>
 			<br>
 			<br>
+			<?php  echo form_label("View Comments and reviews");    ?>
+			<br>
+			<?php
+			$query1 = "SELECT * FROM review WHERE product_id='$gav'";
+				$result3=mysql_query($query1);
+				while($rowes=mysql_fetch_array($result3))
+				{
+					echo "Rating out of 5: ".$rowes['Rating']."<br/>";
+					echo "Review: ".$rowes['Review']."<br/>";
+					
+
+				
+				}
+				
+			
+			
+			
+			?>
+			
 			<br>
 			<br>
 			<br>

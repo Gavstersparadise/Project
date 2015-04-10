@@ -1,12 +1,4 @@
-<?php
-	if($this -> session -> userdata('id') == "" || !($this -> session -> userdata('admin') == "TRUE")){
-   redirect("site/restricted");
-}
-	
-	
-	
-	?>
-				
+
  	<html>
 <head>
 <title>ADMIN PAGE</title>
@@ -21,7 +13,12 @@
 <li style="display:inline; padding:15px;"><a href="delete" style="text-decoration:none;">Delete</a></li>
 <li style="display:inline; padding:15px;"><a href="view" style="text-decoration:none;">View Records</a></li>
 <li style="display:inline; padding:15px;"><a href="automaticCreate" style="text-decoration:none;">create average</a></li>
+<li style="display:inline; padding:15px;"><a href="customerHistory" style="text-decoration:none;">Customer Orders</a></li>
 	<a href="<?php echo base_url(); ?>site/logout"><span>Logout<span></a>
+
+	<?php
+	$this -> session -> userdata('id');
+	?>
 </ul></center>
 </body>
 </html>

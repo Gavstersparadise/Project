@@ -1,3 +1,12 @@
+<?php
+
+	if($this -> session -> userdata('id') == "" || !($this -> session -> userdata('user') == "TRUE") ){
+		
+}
+echo $this -> session -> userdata('id');
+?>
+
+
 <?php echo anchor('cust/user_details', 'Proceed to checkout') ; ?>
 <?php echo form_open('shop/update_cart'); ?>
 
@@ -50,14 +59,31 @@
     <td><strong>Total</strong></td>
     <td>$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
 	<?php
-	
+	$user = $this -> session -> userdata('id');
 	$total =  $items['subtotal'];
+	//loyalty buys
+	$query2 = "
+select c.user_id, count(*) as number 
+from customer c
+left join orders a on c.user_id = a.cust_id 
+where `user_id` = '$user';
+";
+				$result2=mysql_query($query2) or die("Query Failed : ".mysql_error());
+				while($row=mysql_fetch_array($result2))
+				{
+					
+					echo "number: ".$row['number']."<br/>";
+							
+					$lovely = $row['number'];
+					if($lovely > 2){
+	                $total =  $items['subtotal'] * 0.95;
+					echo "Thanks for your loyalty heres a discount your new price is  ";
+				}
+				}
+	
+	
 	echo $total;
-	$user_id = $this -> model_users -> get_userID($this -> input -> post('email'));
-
-	$lovely = array("id" => $user_id, "email" => $this -> input -> post("email"),'total' => $total, "user" => "TRUE", "is_logged_in" => 1);
-
-	$this -> session -> set_userdata($lovely);
+	
 	?>
   </tr>
 

@@ -19,6 +19,12 @@ class Site extends CI_Controller {
 
 	}
 	
+	public  function updateQuantity(){
+	 session_start();
+	$this -> load -> view("updateQuantity");
+	
+	}
+	
 	public  function automaticCreate(){
 	 session_start();
 	$this -> load -> view("automaticCreae");

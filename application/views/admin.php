@@ -14,6 +14,7 @@
 <li style="display:inline; padding:15px;"><a href="view" style="text-decoration:none;">View Records</a></li>
 <li style="display:inline; padding:15px;"><a href="automaticCreate" style="text-decoration:none;">create average</a></li>
 <li style="display:inline; padding:15px;"><a href="customerHistory" style="text-decoration:none;">Customer Orders</a></li>
+<li style="display:inline; padding:15px;"><a href="updateQuantity" style="text-decoration:none;">updateQuantity </a></li>
 	<a href="<?php echo base_url(); ?>site/logout"><span>Logout<span></a>
 
 	<?php
